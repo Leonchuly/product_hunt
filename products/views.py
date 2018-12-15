@@ -1,5 +1,5 @@
 from django.shortcuts import render
 
 # Create your views here.
-def home(request):
+def products_list(request):
     return render(request,'products_list.html')
