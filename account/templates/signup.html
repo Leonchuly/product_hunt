@@ -18,26 +18,35 @@
             <h2>注册账号</h2>
             <font size="3" class="text-black-50">您在这里输入的用户名和密码将成为您登陆的身份。请认真填写。</font>
         </div>
-        <form class="col-md-6 offset-md-3" method="POST" action="{% url 'signup' %}">
+
+        <form method='POST' action='{% url 'signup' %}' align='center'>
             {% csrf_token %}
-            <div class="row-fluid">
+            用户名：
+            <br>
+            <input type="text" name="用户名">
+            <br>
+            密码：
+            <br>
+            <input type="password" name="密码">
+            <br>
+            确认密码：
+            <br>
+            <input type="password" name="确认密码">
+            <br>
+            <br>
+            <input class="btn btn-primary" type="submit" value="立即注册">
+            <!--<div class="row-fluid">
                     <label for="username"><font size="3" class="text-black-50">用户名</font></label>
-                    <input type="text" class="form-control" name="用户名" placeholder="" value="" required>
+                    <input type="text" class="form-control" name="用户名" placeholder="" value="" >
                          {{ 用户名错误 }}
                 </div>
             <div style="float:top; margin-top:10px;">
                     <label for="password"><font size="3" class="text-black-50">密码</font></label>
-                    <input type="password" class="form-control" name="密码" placeholder="" value="" required>
-                    <div class="invalid-feedback">
-                        Valid first name is required.
-                    </div>
+                    <input type="password" class="form-control" name="密码" placeholder="" value="" >
             </div>
             <div style="float:top; margin-top:10px;">
                     <label for="password"><font size="3" class="text-black-50">确认密码</font></label>
-                    <input type="password" class="form-control" name="确认密码" placeholder="" value="" required>
-                    <div class="invalid-feedback">
-                        Valid first name is required.
-                    </div>
+                    <input type="password" class="form-control" name="确认密码" placeholder="" value="" >
             </div>
             <div style="float:top; margin-top:10px;" align="center">
                 <div class="custom-control custom-radio">
@@ -50,7 +59,7 @@
                 <div style="margin:auto">
                         <button class="btn btn-primary btn-lg" type="submit" value="立即注册">注册成为会员</button>
                     </div>
-            </div>
+            </div>-->
         </form>
   
     </div>

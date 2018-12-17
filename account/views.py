@@ -12,9 +12,9 @@ def signup(request):
         try:
             User.objecrs.get(username=user_name)
             return render(request, 'signup.html', {'用户名错误':'该用户名已存在'})
-        except User.DoesNotExits:
+        except User.USERNAME_FIELD:
             if password1 == password2:
                 User.objects.create(username=user_name, password=password1)
                 return redirect('main')
             else:
-                pass
+                return render(request, 'signup.html', {'密码错误':'两次输入的密码不一致'})
