@@ -19,7 +19,7 @@
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="../..">
+            <a class="navbar-brand" href="{% url 'main' %}">
                 <img src="{% static 'logo_P.png' %}" width="15%" >
                 <font>ProductHunter</font>
             </a>
@@ -28,8 +28,22 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ml-auto">
-                    <a class="btn btn-primary btn-sm" href="#" role="button" style="float:left; margin-left:5px;">Sign in</a>
-                    <a class="btn btn-outline-primary btn-sm" href="{% url 'signup' %}" role="button" style="float:left; margin-left:5px;">Sign up</a>
+
+                {% if user.is_authenticated %}
+                <div style="float:top; margin-top:3px;float:right; margin-right:5px;">
+                  <small class="text-muted">Welcom To <span class="badge badge-primary">{{ request.user.username }}</span></small>
+                </div>
+
+                <a class="btn btn-outline-secondary btn-sm" href="Javascript:{document.getElementById('logout').submit()}" role="button" style="float:left; margin-left:5px;">Logout</a>
+                <form id="logout" methou="POST" action="{% url 'logout' %}">
+                  {% csrf_token %}
+                <input type="hidden">
+                </form>
+                {% else %}
+                <a class="btn btn-primary btn-sm" href="{% url 'signin' %}" role="button" style="float:left; margin-left:5px;">Sign in</a>
+                <a class="btn btn-outline-primary btn-sm" href="{% url 'signup' %}" role="button" style="float:left; margin-left:5px;">Sign up</a>
+                {% endif %}
+                
                 </div>
             </div>
         </nav>

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from django.contrib import auth
 
 
 def signup(request):
@@ -18,3 +19,22 @@ def signup(request):
                 return redirect('main')
             else:
                 return render(request, 'signup.html', {'密码错误': '两次输入的密码不一致!'})
+
+def signin(request):
+    if request.method == 'GET':
+        return render(request, 'signin.html')
+    elif request.method == 'POST':
+        user_name = request.POST['用户名']
+        pass_word = request.POST['密码']
+        user = auth.authenticate(username=user_name, password=pass_word)
+        if user is None:
+            return render(request, 'signin.html', {'错误':'用户名或密码错误'})
+        else:
+            auth.login(request, user)
+            return redirect('main')
+
+
+def logout(request):
+    auth.logout(request)
+    return redirect('main')
+    

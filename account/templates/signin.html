@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% extends "theme.html" %}
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Loginuppage</title>
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    {% block content %}
+
+    <div class="container">
+        <div class="py-5 text-center" style="float:top; margin-top:50px;">
+            <h2>登录</h2>
+            <font size="3" class="text-black-50">登录账号可以评论和收藏本站的内容，您也可以获得我们的最新的消息服务。</font>
+        </div>
+
+        <form method='POST' action='{% url 'signin' %}' align='center'>
+            {% csrf_token %}
+            <div align='center'>
+                <input type="text" id="username" class="form-control" style="width:300px" name="用户名" placeholder="用户名" required autofocus>
+            </div>
+            <div align='center' style="float:top; margin-top:8px;">
+                <input type="password" id="password" class="form-control" style="width:300px" name="密码" placeholder="密码" required autofocus>
+            </div>
+            {{ 错误 }}
+            <div align='center'>
+                <div align='left' style="width:250px; float:top; margin-top:8px;">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1"><font size="2" class="text-black-50">保存帐号</font></label>
+                </div>
+            </div>
+            <input class="btn btn-primary btn-lg" style="width:300px; float:top; margin-top:8px;" type="submit" value="登录">
+        </form>
+  
+    </div>
+
+    {% endblock content %}
+</body>
+</html>
