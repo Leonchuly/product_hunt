@@ -33,7 +33,7 @@
                 <div style="float:top; margin-top:3px;float:right; margin-right:5px;">
                   <small class="text-muted">Welcom To <span class="badge badge-primary">{{ request.user.username }}</span></small>
                 </div>
-
+                <a class="btn btn-primary btn-sm" href="{% url '发布页面' %}" role="button" style="float:left; margin-left:5px;">发布</a>
                 <a class="btn btn-outline-secondary btn-sm" href="Javascript:{document.getElementById('logout').submit()}" role="button" style="float:left; margin-left:5px;">Logout</a>
                 <form id="logout" methou="POST" action="{% url 'logout' %}">
                   {% csrf_token %}

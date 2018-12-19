@@ -1,0 +1,33 @@
+{% extends "theme.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="py-5 text-center" style="float:top; margin-top:50px;">
+            <h2>发布内容</h2>
+            <font size="3" class="text-black-50">在这里发布您的最新APP内容</font>
+        </div>
+
+        <form method='post' action='{% url '发布页面' %}' enctype="multipart/form-data">
+            {% csrf_token %}
+            <div align='center'>
+                <input type="text" class="form-control" style="width:550px" name="标题" placeholder="标题" required autofocus>
+            </div>
+            <div align='center' style="float:top; margin-top:8px;">
+                <textarea class="form-control" id="exampleFormControlTextarea1" style="width:550px" rows="3" name="介绍" placeholder="介绍"></textarea>
+            </div>
+            <div align='center' style="float:top; margin-top:8px;">
+                <input type="text" class="form-control" style="width:550px" name="APP链接" placeholder="APP链接" required autofocus>
+            </div>
+            <div align='center' style="float:top; margin-top:8px;">
+                <input type="file" class="form-control" style="width:550px" name="APP图标" placeholder="APP图标" required>
+            </div>
+            <div align='center' style="float:top; margin-top:8px;">
+                <input type="file" class="form-control" style="width:550px" name="大图" placeholder="APP大图" required>
+            </div>
+            {{ 错误 }}
+            <div align='center' style="float:top; margin-top:8px;">
+                <input class="btn btn-primary btn-lg" style="width:200px; float:top; margin-top:8px;" type="submit" value="发布">
+            </div>
+        </form>
+    </div>
+{% endblock content %}
