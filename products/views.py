@@ -5,7 +5,8 @@ from django.utils import timezone
 
 # Create your views here.
 def products_list(request):
-    return render(request,'products_list.html')
+    products = Product.objects
+    return render(request,'products_list.html',{"products": products})
 
 @login_required
 def publish(request):

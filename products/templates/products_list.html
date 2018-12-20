@@ -1,5 +1,24 @@
 {% extends "theme.html" %}
 
 {% block content %}
-这是页面主要内容
+
+<div class="album py-4 bg-white">
+    <div class="container">
+        <div class="row">
+        {% for product in  products.all%}
+        <div class="col-sm">
+            <div class="card shadow-sm">
+                <img class="card-img-top" src="{{ product.icon.url }}" alt="Card image cap" height="150">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.title }}</h5>
+                    <p class="card-text">{{ product.intro }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+
+
 {% endblock content %}
